@@ -10,7 +10,7 @@ import githubIcon from '../Assets/icons/github-removebg-preview.png';
 
 const Signin = () => {
     const [userEmail, setUserEmail] = useState(null)
-    const { signinEmailAndPassword, googleSignIn, facebookSignIn, githubSignIn, forgotPassword } = useContext(AuthContext);
+    const { signinEmailAndPassword, googleSignIn, facebookSignIn, githubSignIn, currentUser, loading, forgotPassword } = useContext(AuthContext);
 
     const handleSignIn = (event) => {
         event.preventDefault();

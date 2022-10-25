@@ -1,12 +1,16 @@
 import React from 'react';
 import { createContext } from 'react';
-import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GithubAuthProvider, GoogleAuthProvider, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import app from '../firebase/firebase.config';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export const AuthContext = createContext();
 const auth = getAuth(app)
 
 const UserContext = ({ children }) => {
+    const [currentUser, setCurrent] = useState(null);
+    const [loading, setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
@@ -32,8 +36,20 @@ const UserContext = ({ children }) => {
     const emailVarification = () => {
         return sendEmailVerification(auth.currentUser)
     }
+    const logOut = () => {
+        return signOut(auth)
+    }
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setCurrent(currentUser);
+            setLoading(false);
+        })
+        return () => {
+            unSubscribe();
+        }
+    }, [])
 
-    const authInfo = { signupWithEmailAndPassword, signinEmailAndPassword, emailVarification, googleSignIn, facebookSignIn, githubSignIn, forgotPassword };
+    const authInfo = { signupWithEmailAndPassword, signinEmailAndPassword, emailVarification, currentUser, loading, googleSignIn, facebookSignIn, githubSignIn, forgotPassword, logOut };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

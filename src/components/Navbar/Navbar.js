@@ -1,9 +1,23 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/UserContext';
 import logo from '../Assets/img/logo3.png';
 import './Navbar.css';
 
 const Navbar = () => {
+    const { currentUser, logOut } = useContext(AuthContext);
+    console.log(currentUser);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                alert('Successfully Logout!');
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                alert(errorMessage);
+            })
+    }
     return (
         <div className='bg-gray-400'>
             <div className="navbar container mx-auto">
@@ -25,7 +39,7 @@ const Navbar = () => {
                                 <Link to={'/signup'}>
                                     <button className="btn btn-outline btn-secondary">Signup</button>
                                 </Link>
-
+                                <button onClick={handleLogOut} className="btn btn-outline btn-secondary">Log out</button>
 
                             </div>
                         </ul>
@@ -58,12 +72,39 @@ const Navbar = () => {
                         </label>
                     </div>
                     <div className="signIn">
-                        <Link to={'/signin'}>
-                            <button className="btn glass mr-3">Signin</button>
-                        </Link>
-                        <Link to={'/signup'}>
-                            <button className="btn glass mr-3">Signup</button>
-                        </Link>
+                        <div>
+                            {
+                                currentUser?.uid ?
+
+                                    <div className="dropdown dropdown-end">
+                                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                            <div className="w-10 rounded-full">
+                                                <img className='w-12 h-12 rounded-full border-2 ' src={currentUser.photoURL} alt="Profile not found!" />
+                                            </div>
+                                        </label>
+                                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-60">
+                                            <p className='text-slate-500'>Sign in as</p>
+                                            <li className='my-3'>{currentUser?.displayName}</li>
+                                            <hr />
+                                            <li className='my-3'>{currentUser?.email}</li>
+                                            <hr />
+                                            <li onClick={handleLogOut} className='cursor-pointer my-3'>Logout</li>
+                                        </ul>
+                                    </div>
+                                    :
+                                    <>
+                                        <Link to={'/signin'}>
+                                            <button className="btn glass mr-3">Signin</button>
+                                        </Link>
+                                        {/* <Link to={'/signup'}>
+                                            <button className="btn glass mr-3">Signup</button>
+                                        </Link> */}
+                                    </>
+                            }
+                        </div>
+
+
+
                     </div>
 
                 </div>
