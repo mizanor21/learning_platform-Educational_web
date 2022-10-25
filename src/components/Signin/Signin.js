@@ -29,24 +29,7 @@ const Signin = () => {
                 form.reset();
             })
     }
-    const handleBlur = (event) => {
-        const email = event.target.value;
-        setUserEmail(email);
-    }
-    const handleForgotPassword = () => {
-        if (!userEmail) {
-            alert('Please enter your email');
-            return;
-        }
-        forgotPassword(userEmail)
-            .then(() => {
-                alert('Please check your. Then set new password.');
-            })
-            .catch(error => {
-                const errorMessage = error.message;
-                alert(errorMessage);
-            })
-    }
+
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(() => {
@@ -75,6 +58,24 @@ const Signin = () => {
             .catch(error => {
                 const errorMessage = error.message
                 alert('Something wrong', errorMessage);
+            })
+    }
+    const handleBlur = (event) => {
+        const email = event.target.value;
+        setUserEmail(email);
+    }
+    const handleForgotPassword = () => {
+        if (!userEmail) {
+            alert('Please enter your email');
+            return;
+        }
+        forgotPassword(userEmail)
+            .then(() => {
+                alert('Please check your. Then set new password.');
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                alert(errorMessage);
             })
     }
     return (
@@ -112,7 +113,7 @@ const Signin = () => {
                                 <img onClick={handleFacebookSignIn} className='w-22 h-11 absolute ml-7 pointer-events-auto cursor-pointer' src={facebookIcon} alt="" />
                                 <img onClick={handleGithubSignIn} className='w-10 h-10 cursor-pointer' src={githubIcon} alt="" />
                             </div>
-
+                            <p>New user? <Link className='btn btn-link' to={'/signup'}>Signup</Link></p>
                         </form>
                     </div>
                 </div>

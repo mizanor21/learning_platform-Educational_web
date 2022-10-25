@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Contexts/UserContext';
 
 const Signup = () => {
-    const { signupWithEmailAndPassword } = useContext(AuthContext)
+    const { signupWithEmailAndPassword, emailVarification } = useContext(AuthContext)
     const handleSignup = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -14,11 +14,19 @@ const Signup = () => {
         // console.log(name, email, password);
         signupWithEmailAndPassword(email, password)
             .then(() => {
-                alert('Successfully create an account!');
+                alert('Please check your email (Maybe mail send spam folder)!. Verify email...');
+                varifyEmail();
                 form.reset();
             })
             .catch(error => {
-                alert('Error ', error);
+                const errorMessage = error.message
+                alert('error ', errorMessage);
+
+            })
+    }
+    const varifyEmail = () => {
+        emailVarification()
+            .then(() => {
 
             })
     }
