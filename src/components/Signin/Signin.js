@@ -3,10 +3,14 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
+// import backgroundImg from '../Assets/img/bg.png';
+import googleIcon from '../Assets/icons/google-removebg-preview.png';
+import facebookIcon from '../Assets/icons/facebook-removebg-preview.png';
+import githubIcon from '../Assets/icons/github-removebg-preview.png';
 
 const Signin = () => {
     const [userEmail, setUserEmail] = useState(null)
-    const { signinEmailAndPassword, forgotPassword } = useContext(AuthContext);
+    const { signinEmailAndPassword, googleSignIn, facebookSignIn, githubSignIn, forgotPassword } = useContext(AuthContext);
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -43,6 +47,36 @@ const Signin = () => {
                 alert(errorMessage);
             })
     }
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(() => {
+                alert('successfully login')
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                alert('Something wrong ', errorMessage);
+            })
+    }
+    const handleFacebookSignIn = () => {
+        facebookSignIn()
+            .then(() => {
+                alert('Successfully login!')
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                alert('Something wrong!', errorMessage)
+            })
+    }
+    const handleGithubSignIn = () => {
+        githubSignIn()
+            .then(() => {
+                alert('Successfully login');
+            })
+            .catch(error => {
+                const errorMessage = error.message
+                alert('Something wrong', errorMessage);
+            })
+    }
     return (
 
         <div>
@@ -73,7 +107,11 @@ const Signin = () => {
                             </div>
                             <hr />
                             <p>Or following use method</p>
-
+                            <div className=" flex justify-center items-center relative ">
+                                <img onClick={handleGoogleSignIn} className='w-24 h-24 mr-20 cursor-pointer	' src={googleIcon} alt="" />
+                                <img onClick={handleFacebookSignIn} className='w-22 h-11 absolute ml-7 pointer-events-auto cursor-pointer' src={facebookIcon} alt="" />
+                                <img onClick={handleGithubSignIn} className='w-10 h-10 cursor-pointer' src={githubIcon} alt="" />
+                            </div>
 
                         </form>
                     </div>
