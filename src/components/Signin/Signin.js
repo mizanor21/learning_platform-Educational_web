@@ -24,8 +24,9 @@ const Signin = () => {
                 alert('Successfully login!');
                 form.reset();
             })
-            .catch((error) => {
-                alert('error', error);
+            .catch(error => {
+                const errorMessage = error.message;
+                alert(errorMessage);
                 form.reset();
             })
     }
@@ -37,7 +38,7 @@ const Signin = () => {
             })
             .catch(error => {
                 const errorMessage = error.message;
-                alert('Something wrong ', errorMessage);
+                alert(errorMessage);
             })
     }
     const handleFacebookSignIn = () => {
@@ -46,8 +47,8 @@ const Signin = () => {
                 alert('Successfully login!')
             })
             .catch(error => {
-                const errorMessage = error.message
-                alert('Something wrong!', errorMessage)
+                const errorMessage = error.message;
+                alert(errorMessage);
             })
     }
     const handleGithubSignIn = () => {
@@ -56,8 +57,8 @@ const Signin = () => {
                 alert('Successfully login');
             })
             .catch(error => {
-                const errorMessage = error.message
-                alert('Something wrong', errorMessage);
+                const errorMessage = error.message;
+                alert(errorMessage);
             })
     }
     const handleBlur = (event) => {
