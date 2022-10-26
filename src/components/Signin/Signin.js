@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 // import backgroundImg from '../Assets/img/bg.png';
 import googleIcon from '../Assets/icons/google-removebg-preview.png';
@@ -11,6 +11,7 @@ import githubIcon from '../Assets/icons/github-removebg-preview.png';
 const Signin = () => {
     const [userEmail, setUserEmail] = useState(null)
     const { signinEmailAndPassword, googleSignIn, facebookSignIn, githubSignIn, currentUser, loading, forgotPassword } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleSignIn = (event) => {
         event.preventDefault();
