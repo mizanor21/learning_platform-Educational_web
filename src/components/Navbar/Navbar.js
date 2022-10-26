@@ -39,14 +39,14 @@ const Navbar = () => {
                                 <Link to={'/signup'}>
                                     <button className="btn btn-outline btn-secondary">Signup</button>
                                 </Link>
-                                <button onClick={handleLogOut} className="btn btn-outline btn-secondary">Log out</button>
 
                             </div>
                         </ul>
                     </div>
                     <Link to={'/'} className="flex items-center justify-center">
-                        <img className='w-24 ' src={logo} alt="logo not found" />
-                        <Link to={'/'} className="btn btn-ghost normal-case text-xl p-0 m-0">Edu<span className='text-amber-400'>Camp</span></Link>
+                        <Link to={'/'} className="btn btn-ghost normal-case text-xl p-0 m-0">
+                            <img className='w-24 ' src={logo} alt="logo not found" />
+                            Edu<span className='text-amber-400'>Camp</span></Link>
 
                     </Link>
                 </div>
