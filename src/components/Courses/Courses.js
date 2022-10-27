@@ -20,7 +20,7 @@ const Courses = () => {
                     <hr />
                     {
                         courses.map(course => <p className='text-start' key={course.id}>
-                            <Link className='btn btn-link'>{course.title}</Link>
+                            <Link to={`/details/${course.course_id}`} className='btn btn-link'>{course.title}</Link>
                         </p>
                         )
                     }

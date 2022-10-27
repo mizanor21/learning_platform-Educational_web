@@ -8,6 +8,8 @@ import Signup from './components/Signup/Signup';
 import Blog from './components/Blog/Blog';
 import Faq from './components/Faq/Faq';
 import PrivetRoute from './components/routes/PrivetRoute';
+import CourseDetails from './components/CourseDetails/CourseDetails';
+import PremiumPage from './components/PremiumPage/PremiumPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -29,7 +31,7 @@ function App() {
         },
         {
           path: '/blog',
-          element: <PrivetRoute><Blog></Blog></PrivetRoute>
+          element: <Blog></Blog>
         },
         {
           path: '/faq',
@@ -42,6 +44,16 @@ function App() {
         {
           path: '/signup',
           element: <Signup></Signup>
+        },
+        {
+          path: '/details/:id',
+          element: <CourseDetails></CourseDetails>,
+          loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
+
+        },
+        {
+          path: '/premium',
+          element: <PrivetRoute><PremiumPage></PremiumPage></PrivetRoute>
         }
       ]
     }
