@@ -61,7 +61,7 @@ const Navbar = () => {
 
                 <div className="navbar-end ">
                     <div className="mr-3">
-                        <label className="swap swap-rotate">
+                        <label title='Toggle Dark/Light Mode' className="swap swap-rotate">
 
                             <input type="checkbox" />
 
