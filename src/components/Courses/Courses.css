@@ -1,5 +1,24 @@
+@media screen and (max-width: 1300px) {
+    .courses-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 1022px) {
+    .courses-card {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 @media screen and (max-width: 620px) {
     .courses {
         display: block;
+    }
+
+    .courses-card {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
     }
 }

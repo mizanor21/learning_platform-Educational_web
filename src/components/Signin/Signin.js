@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 // import backgroundImg from '../Assets/img/bg.png';
 import googleIcon from '../Assets/icons/google-removebg-preview.png';
@@ -13,6 +13,7 @@ const Signin = () => {
     const { signinEmailAndPassword, googleSignIn, facebookSignIn, githubSignIn, currentUser, loading, forgotPassword } = useContext(AuthContext);
 
     const handleSignIn = (event) => {
+        // const navigate = useNavigate();
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -23,6 +24,8 @@ const Signin = () => {
             .then(() => {
                 alert('Successfully login!');
                 form.reset();
+                // nagigate('/route')
+
             })
             .catch(error => {
                 const errorMessage = error.message;

@@ -14,7 +14,7 @@ const Courses = () => {
     }, [])
     return (
         <div className='courses flex container mx-auto my-10'>
-            <div className="sidebar w-96 min-h-screen border-2 mr-2 rounded-lg">
+            <div className="sidebar w-96 min-h-screen mr-2 mb-2 rounded-lg">
                 <div className="">
                     <h1 className='font-bold text-xl  mt-5'>All course: {courses.length}</h1>
                     <hr />
@@ -26,8 +26,8 @@ const Courses = () => {
                     }
                 </div>
             </div>
-            <div className="card-container w-full min-h-screen border-2 rounded-lg">
-                <div className="grid grid-cols-3 gap-3">
+            <div className="card-container  w-full min-h-screen rounded-lg">
+                <div className="courses-card  grid grid-cols-3 gap-3">
                     {
                         courses.map(course => <Course key={course.id} course={course}></Course>)
                     }

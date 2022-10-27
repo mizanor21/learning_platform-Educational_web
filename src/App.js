@@ -7,6 +7,7 @@ import Signin from './components/Signin/Signin';
 import Signup from './components/Signup/Signup';
 import Blog from './components/Blog/Blog';
 import Faq from './components/Faq/Faq';
+import PrivetRoute from './components/routes/PrivetRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -28,7 +29,7 @@ function App() {
         },
         {
           path: '/blog',
-          element: <Blog></Blog>
+          element: <PrivetRoute><Blog></Blog></PrivetRoute>
         },
         {
           path: '/faq',
@@ -46,7 +47,7 @@ function App() {
     }
   ])
   return (
-    <div className="App">
+    <div className="">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );
