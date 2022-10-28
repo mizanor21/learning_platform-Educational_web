@@ -8,7 +8,7 @@ import './Courses.css';
 const Courses = () => {
     const [courses, setCourses] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/catagories')
+        fetch('https://learning-web-server-mizanor21.vercel.app/catagories')
             .then(res => res.json())
             .then(data => setCourses(data))
     }, [])

@@ -48,7 +48,7 @@ function App() {
         {
           path: '/details/:id',
           element: <CourseDetails></CourseDetails>,
-          loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`)
+          loader: ({ params }) => fetch(`https://learning-web-server-mizanor21.vercel.app/details/${params.id}`)
 
         },
         {
