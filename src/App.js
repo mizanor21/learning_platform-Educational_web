@@ -10,6 +10,7 @@ import Faq from './components/Faq/Faq';
 import PrivetRoute from './components/routes/PrivetRoute';
 import CourseDetails from './components/CourseDetails/CourseDetails';
 import PremiumPage from './components/PremiumPage/PremiumPage';
+import Error from './components/Error/Error';
 
 function App() {
   const router = createBrowserRouter([
@@ -54,6 +55,10 @@ function App() {
         {
           path: '/premium',
           element: <PrivetRoute><PremiumPage></PremiumPage></PrivetRoute>
+        },
+        {
+          path: '*',
+          element: <Error></Error>
         }
       ]
     }
