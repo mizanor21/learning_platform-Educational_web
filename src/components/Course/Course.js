@@ -7,7 +7,7 @@ const course = (props) => {
     return (
         <div>
             <div className="card card-compact bg-base-100 shadow-xl ">
-                <figure><img className='w-30 h-64' src={img} alt="Shoes" /></figure>
+                <figure><img className='w-30 h-64' src={img} alt="img not found" /></figure>
                 <div className="card-body">
                     <h2 className='text-xl font-bold'>{title}</h2>
                     <div className="card-actions justify-end">

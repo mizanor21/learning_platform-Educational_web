@@ -11,7 +11,7 @@ const CourseDetails = () => {
         <div className='flex justify-center container mx-auto my-10'>
 
             <div ref={ref} className="">
-                <img className='rounded-lg w-full' src={course.img} alt="" />
+                <img className='rounded-lg w-full' src={course.img} alt="img not found" />
                 <div className="flex justify-between my-5">
                     <h3 className='font-bold text-2xl'>{course.title}</h3>
                     <Pdf targetRef={ref} filename="code-example.pdf">
