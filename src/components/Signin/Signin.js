@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/UserContext';
 // import backgroundImg from '../Assets/img/bg.png';
 import googleIcon from '../Assets/icons/google-removebg-preview.png';
@@ -12,8 +12,11 @@ const Signin = () => {
     const [userEmail, setUserEmail] = useState(null)
     const { signinEmailAndPassword, googleSignIn, facebookSignIn, githubSignIn, currentUser, loading, forgotPassword } = useContext(AuthContext);
 
+    let navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
+
     const handleSignIn = (event) => {
-        // const navigate = useNavigate();
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -24,7 +27,7 @@ const Signin = () => {
             .then(() => {
                 alert('Successfully login!');
                 form.reset();
-                // nagigate('/route')
+                navigate(from, { replace: true })
 
             })
             .catch(error => {
@@ -38,6 +41,7 @@ const Signin = () => {
         googleSignIn()
             .then(() => {
                 alert('successfully login')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 const errorMessage = error.message;
@@ -48,6 +52,7 @@ const Signin = () => {
         facebookSignIn()
             .then(() => {
                 alert('Successfully login!')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 const errorMessage = error.message;
@@ -58,6 +63,7 @@ const Signin = () => {
         githubSignIn()
             .then(() => {
                 alert('Successfully login');
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 const errorMessage = error.message;

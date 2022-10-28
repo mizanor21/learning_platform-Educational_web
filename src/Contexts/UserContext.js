@@ -16,21 +16,27 @@ const UserContext = ({ children }) => {
     const facebookProvider = new FacebookAuthProvider();
 
     const signupWithEmailAndPassword = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const signinEmailAndPassword = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const forgotPassword = (email) => {
+
         return sendPasswordResetEmail(auth, email)
     }
     const googleSignIn = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     const facebookSignIn = () => {
+        setLoading(true)
         return signInWithPopup(auth, facebookProvider)
     }
     const githubSignIn = () => {
+        setLoading(true)
         return signInWithPopup(auth, githubProvider)
     }
     const emailVarification = () => {
