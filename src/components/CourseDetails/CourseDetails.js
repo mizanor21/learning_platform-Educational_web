@@ -20,7 +20,7 @@ const CourseDetails = () => {
                 </div>
                 <p>{course.details}</p>
                 <div className="text-end mt-10">
-                    <Link to={'/premium'}>
+                    <Link to={`/premium/${course.course_id}`}>
                         <button className="btn btn-outline btn-primary">Get premium access</button>
                     </Link>
                 </div>

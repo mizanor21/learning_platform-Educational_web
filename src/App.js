@@ -53,8 +53,9 @@ function App() {
 
         },
         {
-          path: '/premium',
-          element: <PrivetRoute><PremiumPage></PremiumPage></PrivetRoute>
+          path: '/premium/:id',
+          element: <PrivetRoute><PremiumPage></PremiumPage></PrivetRoute>,
+          loader: ({ params }) => fetch(`https://learning-web-server-mizanor21.vercel.app/premium/${params.id}`)
         },
         {
           path: '*',

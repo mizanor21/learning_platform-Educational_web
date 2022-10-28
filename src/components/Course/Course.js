@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const course = (props) => {
     const { course_id, title, img } = props.course;
-    console.log(img)
+    // console.log(img)
     return (
         <div>
             <div className="card card-compact bg-base-100 shadow-xl ">
